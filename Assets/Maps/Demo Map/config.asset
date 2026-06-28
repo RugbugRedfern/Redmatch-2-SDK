@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139106f53bb988d43ab5e115022c515e, type: 3}
+  m_Name: config
+  m_EditorClassIdentifier: 
+  bundleName: demo_map
+  name: Demo Map
+  thumbnail: {fileID: 2800000, guid: 161b49540e59e3a4ea88586d9cf0479f, type: 3}
+  screenshots:
+  - {fileID: 2800000, guid: 5a5231df024dacb449c54324fb2b4539, type: 3}
+  - {fileID: 2800000, guid: 5b653d55e09d3e04fad2704c0817ceff, type: 3}
+  matchSettingOverrides: []

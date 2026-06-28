@@ -1,0 +1,2 @@
+# Redmatch 2 SDK
+Source code for the Redmatch 2 SDK. Some code is stripped for security reasons -- code that wasn't stripped that can be relevant for understanding underlying functionality will be surrounded by `#if REDMATCH <code> #endif`

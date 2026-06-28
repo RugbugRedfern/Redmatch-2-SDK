@@ -1,0 +1,1 @@
+public enum Team { Red, Blue, Yellow, Green, Infected, Survivor };
