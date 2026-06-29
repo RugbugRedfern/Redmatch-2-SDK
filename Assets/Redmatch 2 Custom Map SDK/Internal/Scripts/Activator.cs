@@ -286,7 +286,7 @@ public abstract class Activator : ActivatorReferencer
 
 	protected bool GetBool(ValueSource source, ActivatePayload payload)
 	{
-		return GetValue(source, payload) >= 1;
+		return GetValue(source, payload) != 0;
 	}
 
 	[System.Serializable] // for debugging
