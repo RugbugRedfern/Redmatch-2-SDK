@@ -20,7 +20,7 @@ public class InputTrigger : CooldownTrigger
 
 	public override string GetTarget()
 	{
-		return "The Player that pressed / held the given input.";
+		return "The Player that presses / holds / releases the given input.";
 	}
 
 #if REDMATCH
