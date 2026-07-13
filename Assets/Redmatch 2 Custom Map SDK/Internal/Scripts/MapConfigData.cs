@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum CustomMapMatchSetting
@@ -29,13 +30,15 @@ public enum CustomMapMatchSetting
 	AllowSpectating = 54,
 	SMGDamage = 65,
 	DoubleBarrelDamage = 66,
-	KnockbackMultiplier = 67
+	KnockbackMultiplier = 67,
+	InfiniteAmmo = 60,
 }
 
 [System.Serializable]
 public class UnsanitizedMapConfigData
 {
 	public Dictionary<string, string> MatchSettingOverrides = new Dictionary<string, string>();
+	public List<GameMode> Modes = new List<GameMode>();
 	public string SDKVersion;
 }
 
