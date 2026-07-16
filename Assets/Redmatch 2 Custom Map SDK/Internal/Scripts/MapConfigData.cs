@@ -38,7 +38,6 @@ public enum CustomMapMatchSetting
 public class UnsanitizedMapConfigData
 {
 	public Dictionary<string, string> MatchSettingOverrides = new Dictionary<string, string>();
-	public List<GameMode> Modes = new List<GameMode>();
 	public string SDKVersion;
 }
 
