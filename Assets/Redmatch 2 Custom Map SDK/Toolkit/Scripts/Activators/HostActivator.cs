@@ -48,7 +48,7 @@ public class HostActivator : Activator
 			{
 				winningTeamIndex = -1;
 			}
-			if(doDynamicTeamWinLogic)
+			else if(doDynamicTeamWinLogic)
 			{
 				winningTeamIndex = GetDynamicWinningTeam(payload);
 			}
