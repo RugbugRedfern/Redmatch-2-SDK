@@ -1,0 +1,25 @@
+{
+	"name": "com.redmatch.mapsdk",
+	"version": "1.2.0",
+	"displayName": "Redmatch 2 Custom Map SDK",
+	"documentationUrl": "https://redmatchgame.com/custom-maps",
+	"changelogUrl": "https://github.com/RugbugRedfern/Redmatch-2-SDK/blob/release/Assets/Redmatch%202%20Custom%20Map%20SDK/CHANGELOG.md",
+	"description": "Tools and components for creating custom maps for Redmatch 2.",
+	"unity": "2019.4",
+	"unityRelease": "41f1",
+	"hideInEditor": false,
+	"license": "See LICENSE.md file",
+	"author": {
+		"name": "Redmatch 2 Team",
+		"url": "https://redmatchgame.com/"
+	},
+	"keywords": [
+		"redmatch",
+		"custom map",
+		"sdk"
+	],
+	"dependencies": {
+		"com.unity.postprocessing": "3.0.3",
+		"com.unity.probuilder": "4.4.0"
+	}
+}
