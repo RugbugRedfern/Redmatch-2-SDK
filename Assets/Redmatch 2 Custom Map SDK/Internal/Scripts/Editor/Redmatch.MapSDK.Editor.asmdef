@@ -1,9 +1,18 @@
-﻿{
-	"name": "Redmatch.MapSDK.Editor",
-	"references": [
-		"Redmatch.MapSDK.Runtime"
-	],
-	"includePlatforms": [
-		"Editor"
-	]
+{
+    "name": "Redmatch.MapSDK.Editor",
+    "references": [
+        "Redmatch.MapSDK.Runtime",
+        "com.rlabrecque.steamworks.net"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
