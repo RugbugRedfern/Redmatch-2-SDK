@@ -1,0 +1,9 @@
+﻿{
+	"name": "Redmatch.MapSDK.Editor",
+	"references": [
+		"Redmatch.MapSDK.Runtime"
+	],
+	"includePlatforms": [
+		"Editor"
+	]
+}
