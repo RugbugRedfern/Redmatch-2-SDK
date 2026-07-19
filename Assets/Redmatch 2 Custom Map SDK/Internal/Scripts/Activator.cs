@@ -6,17 +6,20 @@ using UnityEngine.SceneManagement;
 using System;
 using static ValueSource;
 
+
+
+
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 public abstract class Activator : ActivatorReferencer
 {
-	public enum ConditionalLogicType { NoRequirement, LessThan, LessThanOrEqualTo, EqualTo, MoreThanOrEqualTo, MoreThan, NotEqualTo };
-	[Tooltip("If a requirement is set, this Activator will only activate if the conditional logic evaluates to true.")]
-	public ConditionalLogicType conditionalLogicType;
-	public ValueSource firstValue;
-	public ValueSource secondValue;
+	public enum ConditionalLogicCheckEvaluation { PassIfAnyAreTrue, PassIfAllAreTrue }
+	public ConditionalLogicCheckEvaluation compoundCheckEvaluation;
+	[Tooltip("This Activator will only activate if the conditional logic evaluates to true.")]
+	public ConditionalLogicCheck[] conditionalLogicChecks = new ConditionalLogicCheck[0];
 	public enum PlayerFilterMode { NoFilter, NonPlayerOnly, PlayerOnly, LocalPlayerOnly, HostPlayerOnly }
 	[Tooltip("If set, this activator can only activate when the triggering player (or object) matches the filter.")]
 	public PlayerFilterMode playerFilter;
@@ -35,13 +38,16 @@ public abstract class Activator : ActivatorReferencer
 
 	protected void BaseErrorChecks(ref List<string> errors)
 	{
-		if(conditionalLogicType != ConditionalLogicType.NoRequirement && !firstValue.Valid())
+		for(int i = 0; i < conditionalLogicChecks.Length; i++)
 		{
-			errors.Add("First value source is not valid.");
-		}
-		if(conditionalLogicType != ConditionalLogicType.NoRequirement && !secondValue.Valid())
-		{
-			errors.Add("Second value source is not valid.");
+			if(!conditionalLogicChecks[i].firstValue.Valid())
+			{
+				errors.Add($"First value source is not valid for check #{i + 1}.");
+			}
+			if(!conditionalLogicChecks[i].secondValue.Valid())
+			{
+				errors.Add($"Second value source is not valid for check #{i + 1}.");
+			}
 		}
 	}
 
@@ -154,35 +160,17 @@ public abstract class Activator : ActivatorReferencer
 
 		var payload = new ActivatePayload() { target = target, data = data, source = source };
 
-		switch(conditionalLogicType)
+		// CONDITIONAL LOGIC CHECKS
+
+		for(int i = 0; i < conditionalLogicChecks.Length; i++)
 		{
-			case ConditionalLogicType.LessThan:
-				if(!(GetValue(firstValue, payload) < GetValue(secondValue, payload)))
-					return;
-				break;
-			case ConditionalLogicType.LessThanOrEqualTo:
-				if(!(GetValue(firstValue, payload) <= GetValue(secondValue, payload)))
-					return;
-				break;
-			case ConditionalLogicType.EqualTo:
-				if(!(GetValue(firstValue, payload) == GetValue(secondValue, payload)))
-					return;
-				break;
-			case ConditionalLogicType.MoreThanOrEqualTo:
-				if(!(GetValue(firstValue, payload) >= GetValue(secondValue, payload)))
-					return;
-				break;
-			case ConditionalLogicType.MoreThan:
-				if(!(GetValue(firstValue, payload) > GetValue(secondValue, payload)))
-					return;
-				break;
-			case ConditionalLogicType.NotEqualTo:
-				if(!(GetValue(firstValue, payload) != GetValue(secondValue, payload)))
-					return;
+			bool eval = conditionalLogicChecks[i].Evaluate(GetValue(conditionalLogicChecks[i].firstValue, payload), GetValue(conditionalLogicChecks[i].secondValue, payload));
+
+			if(eval == true && compoundCheckEvaluation == ConditionalLogicCheckEvaluation.PassIfAnyAreTrue)
 				break;
 
-			default:
-				break;
+			if(eval == false && compoundCheckEvaluation == ConditionalLogicCheckEvaluation.PassIfAllAreTrue)
+				return;
 		}
 
 		if(actionDelay == 0)
@@ -379,5 +367,50 @@ public class ValueSource
 			return false;
 
 		return true;
+	}
+}
+
+[System.Serializable]
+public class ConditionalLogicCheck
+{
+	public enum ConditionalLogicType { LessThan, LessThanOrEqualTo, EqualTo, MoreThanOrEqualTo, MoreThan, NotEqualTo };
+	public ConditionalLogicType conditionalLogicType;
+	public ValueSource firstValue;
+	public ValueSource secondValue;
+
+	public bool Evaluate(float firstValue, float secondValue)
+	{
+		switch(conditionalLogicType)
+		{
+			case ConditionalLogicType.LessThan:
+				if(firstValue < secondValue)
+					return true;
+				break;
+			case ConditionalLogicType.LessThanOrEqualTo:
+				if(firstValue <= secondValue)
+					return true;
+				break;
+			case ConditionalLogicType.EqualTo:
+				if(firstValue == secondValue)
+					return true;
+				break;
+			case ConditionalLogicType.MoreThanOrEqualTo:
+				if(firstValue >= secondValue)
+					return true;
+				break;
+			case ConditionalLogicType.MoreThan:
+				if(firstValue > secondValue)
+					return true;
+				break;
+			case ConditionalLogicType.NotEqualTo:
+				if(firstValue != secondValue)
+					return true;
+				break;
+
+			default:
+				break;
+		}
+
+		return false;
 	}
 }
