@@ -25,7 +25,7 @@ jobs:
           VERSION: ${{ steps.version.outputs.value }}
         run: |
           awk -v version="$VERSION" '
-            $0 ~ "^# " version " " {
+            index($0, "# " version " ") == 1 {
               found = 1
               next
             }
@@ -39,16 +39,30 @@ jobs:
             }
           ' "Assets/Redmatch 2 Custom Map SDK/CHANGELOG.md" > release-notes.md
 
-      - name: Create asset list
-        run: |
-          echo "Assets/Redmatch 2 Custom Map SDK.meta" > metaList
-          find "Assets/Redmatch 2 Custom Map SDK" -name "*.meta" | sort >> metaList
+          if [ ! -s release-notes.md ]; then
+            echo "Could not find changelog notes for version $VERSION."
+            exit 1
+          fi
 
-      - name: Create Unity package
+      - name: Create Unity package asset lists
+        run: |
+          echo "Assets/Redmatch 2 Custom Map SDK.meta" > sdkMetaList
+          find "Assets/Redmatch 2 Custom Map SDK" -name "*.meta" | sort >> sdkMetaList
+
+          echo "Assets/Maps/Demo Map.meta" > demoMapMetaList
+          find "Assets/Maps/Demo Map" -name "*.meta" | sort >> demoMapMetaList
+
+      - name: Create SDK Unity package
         uses: pCYSl5EDgo/create-unitypackage@v1.2.3
         with:
-          package-path: Redmatch 2 Custom Map SDK v${{ steps.version.outputs.value }}.unitypackage
-          include-files: metaList
+          package-path: "Redmatch 2 Custom Map SDK v${{ steps.version.outputs.value }}.unitypackage"
+          include-files: sdkMetaList
+
+      - name: Create Demo Map Unity package
+        uses: pCYSl5EDgo/create-unitypackage@v1.2.3
+        with:
+          package-path: "Demo Map v${{ steps.version.outputs.value }}.unitypackage"
+          include-files: demoMapMetaList
 
       - name: Create GitHub Release
         env:
@@ -56,7 +70,8 @@ jobs:
           VERSION: ${{ steps.version.outputs.value }}
         run: |
           gh release create "v$VERSION" \
-            "Redmatch 2 Custom Map SDK v$VERSION.unitypackage" \
+            "Redmatch 2 Custom Map SDK v$VERSION.unitypackage#Redmatch 2 Custom Map SDK v$VERSION.unitypackage" \
+            "Demo Map v$VERSION.unitypackage#Demo Map v$VERSION.unitypackage" \
             --target "$GITHUB_SHA" \
             --title "Redmatch 2 Custom Map SDK v$VERSION" \
             --notes-file release-notes.md
