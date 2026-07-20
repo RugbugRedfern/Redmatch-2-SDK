@@ -11,7 +11,7 @@ public static class ActivatorEditorCommon
 		EditorGUILayout.LabelField("Conditional Logic", EditorStyles.boldLabel);
 
 		EditorGUI.indentLevel++;
-		EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(activator.compoundCheckEvaluation)), new GUIContent("Compound Check Evaluation", ""), true);
+		EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(activator.compoundCheckEvaluation)), new GUIContent("Evaluation", ""), true);
 
 		if(activator.conditionalLogicChecks.Length > 0)
 		{
