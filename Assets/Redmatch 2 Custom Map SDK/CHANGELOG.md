@@ -1,5 +1,24 @@
-# 1.2.0 (X/XX/XXXX)
-* <insert changes here>
+# 1.2.0 (7/19/2026)
+
+### Additions
+* Added Git Unity Package Manager support for easy auto-updates. This is now the recommended installation method.
+* Added the "IntSyncer" component, allowing for storage of integer values for use in maths and logic.
+* Added the "InputTrigger" component, allowing for interactions with inputs (button and axis inputs).
+* Added the "MathActivator" component, allowing for algebra calculations and Boolean logic.
+* Added the "HostActivator" component, allowing for special host actions (currently, ending the game with custom win logic).
+* Added the "ValueSource" type, which allows certain components to grab an integer (whole number) value from a certain source. This includes a constant value, HealthSyncer, IntSyncer, current room info, or trigger source info.
+
+### Changes
+* HealthSyncer now functions locally when "Sync" is disabled.
+* Activators now have a "Player Filter", allowing for improved control and logic (options are NoFilter, NonPlayerOnly, PlayerOnly, LocalPlayerOnly, HostPlayerOnly).
+* Activators now have a "Conditional Logic" section, which allows you to gate Activator execution using ValueSources.
+* TargetActivators have a new "Teleport to Player Camera" option, available when "Teleport to Original Target" is true.
+* GenericActivators can now trigger a random activator from the list "Random Activator to Trigger".
+* RigidbodySyncer teleport has been reworked. Now, a RigidbodySyncer with "Sync" ON and "Host Only" OFF can be teleported by non-host players.
+
+### Bugfixes
+* Fixed HealthSyncer always triggering "OnDamaged" activators whenever health is changed.
+* Fixed HealthSyncer never triggering "OnHealed" activators when health is increased.
 
 # 1.1.2 (1/25/2026)
 * Added the MapLoadedTrigger, TimeTrialStartedTrigger, and TimeTrialFinishedTrigger.
