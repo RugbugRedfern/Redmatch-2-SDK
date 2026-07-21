@@ -1,4 +1,4 @@
-# 1.2.0 (7/19/2026)
+# 1.1.3 (7/20/2026)
 
 ### Additions
 * Added Git Unity Package Manager support for easy auto-updates. This is now the recommended installation method.
@@ -7,6 +7,7 @@
 * Added the "MathActivator" component, allowing for algebra calculations and Boolean logic.
 * Added the "HostActivator" component, allowing for special host actions (currently, ending the game with custom win logic).
 * Added the "ValueSource" type, which allows certain components to grab an integer (whole number) value from a certain source. This includes a constant value, HealthSyncer, IntSyncer, current room info, or trigger source info.
+* Clicking the question mark icon in the inspector by the component name will now take you to the wiki reference for that component.
 
 ### Changes
 * HealthSyncer now functions locally when "Sync" is disabled.
