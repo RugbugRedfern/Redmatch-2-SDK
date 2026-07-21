@@ -1,5 +1,8 @@
 using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Triggers#entertrigger-c-source")]
 public class EnterTrigger : TriggerColliderTrigger
 {
 	public override string GetTarget()

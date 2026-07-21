@@ -3,7 +3,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(MyceliumIdentity))]
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Syncers#gameobjectsyncer-c-source")]
 public class GameObjectSyncer : SyncedBehaviour
 {
 #if REDMATCH

@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Proxies#upgradecabinetproxy-c-source")]
 public class UpgradeCabinetProxy : ErrorCollectionBehaviour
 {
 	[HideInInspector] public int id = -1;

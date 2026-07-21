@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(MyceliumIdentity))]
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Syncers#animatorsyncer-c-source")]
 public class AnimatorSyncer : SyncedBehaviour
 {
 	public bool desyncProtection = true;

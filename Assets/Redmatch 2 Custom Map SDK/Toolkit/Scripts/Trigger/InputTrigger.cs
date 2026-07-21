@@ -1,7 +1,10 @@
 
 using UnityEngine;
 
+
 [RequireComponent(typeof(MyceliumIdentity))]
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Triggers#inputtrigger-c-source")]
 public class InputTrigger : CooldownTrigger
 {
 	public enum InputTriggerType { Pressed, Held, Released }

@@ -161,15 +161,24 @@ public abstract class Activator : ActivatorReferencer
 		var payload = new ActivatePayload() { target = target, data = data, source = source };
 
 		// CONDITIONAL LOGIC CHECKS
-
+		bool anyCheckPassed = false;
 		for(int i = 0; i < conditionalLogicChecks.Length; i++)
 		{
 			bool eval = conditionalLogicChecks[i].Evaluate(GetValue(conditionalLogicChecks[i].firstValue, payload), GetValue(conditionalLogicChecks[i].secondValue, payload));
 
-			if(eval == true && compoundCheckEvaluation == ConditionalLogicCheckEvaluation.PassIfAnyAreTrue)
+			if (eval)
+				anyCheckPassed = true;
+
+			if (eval == true && compoundCheckEvaluation == ConditionalLogicCheckEvaluation.PassIfAnyAreTrue)
 				break;
 
 			if(eval == false && compoundCheckEvaluation == ConditionalLogicCheckEvaluation.PassIfAllAreTrue)
+				return;
+		}
+
+		if(conditionalLogicChecks.Length > 0 && compoundCheckEvaluation == ConditionalLogicCheckEvaluation.PassIfAnyAreTrue)
+		{
+			if (!anyCheckPassed)
 				return;
 		}
 

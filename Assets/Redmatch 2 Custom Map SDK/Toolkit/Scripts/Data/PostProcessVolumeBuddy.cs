@@ -1,6 +1,9 @@
 
 using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/PostProcessVolumeBuddy")]
 public class PostProcessVolumeBuddy : MonoBehaviour
 {
 #if !REDMATCH

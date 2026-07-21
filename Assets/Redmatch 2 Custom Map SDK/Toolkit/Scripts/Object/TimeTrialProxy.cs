@@ -1,5 +1,9 @@
 using System.Collections.Generic;
+using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Proxies#timetrialproxy-c-source")]
 public class TimeTrialProxy : ErrorCollectionBehaviour
 {
 	public TimeTrialNodeProxy[] nodes;

@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Spawnpoint")]
 public class Spawnpoint : MonoBehaviour
 {
 	public enum SpawnpointType { AnyMode, OnlyFreeForAll, OnlyTeams };
