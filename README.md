@@ -7,7 +7,8 @@ You don't need to modify this code to make a map, but you can look at it to unde
 Start with the [Wiki](https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Introduction)!
 
 # Install
-You can install the SDK through Unity's Package Manager by adding the package through this URL:
-```bash
+In Unity, navigate to Window > Package Manager. Click the "+" icon in the top left, and choose "Add package from git URL..." paste in the following and click "Add":
+```
 https://github.com/RugbugRedfern/Redmatch-2-SDK.git?path=/Assets/Redmatch%202%20Custom%20Map%20SDK#release
 ```
+If you have an existing version of the SDK inside your Assets folder, you will need to remove it.
