@@ -73,5 +73,5 @@ jobs:
             "Redmatch 2 Custom Map SDK v$VERSION.unitypackage#Redmatch 2 Custom Map SDK v$VERSION.unitypackage" \
             "Demo Map v$VERSION.unitypackage#Demo Map v$VERSION.unitypackage" \
             --target "$GITHUB_SHA" \
-            --title "Redmatch 2 Custom Map SDK v$VERSION" \
+            --title "v$VERSION" \
             --notes-file release-notes.md
