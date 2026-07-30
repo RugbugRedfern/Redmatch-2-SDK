@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Activators#target-activator-c-source")]
 public class TargetActivator : Activator
 {
 	public enum TargetActivatorTargetMode { Dynamic, Preset };

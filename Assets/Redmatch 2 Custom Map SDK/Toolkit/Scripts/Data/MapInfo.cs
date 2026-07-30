@@ -3,6 +3,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/MapInfo")]
 public class MapInfo : BoundedBehaviour
 {
 	public override Color BoundsColor => Color.clear;

@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Triggers#exittrigger-c-source")]
 public class ExitTrigger : TriggerColliderTrigger
 {
 	public override string GetTarget()

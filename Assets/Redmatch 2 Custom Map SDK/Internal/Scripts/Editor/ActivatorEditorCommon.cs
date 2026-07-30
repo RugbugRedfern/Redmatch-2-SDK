@@ -11,20 +11,23 @@ public static class ActivatorEditorCommon
 		EditorGUILayout.LabelField("Conditional Logic", EditorStyles.boldLabel);
 
 		EditorGUI.indentLevel++;
-		EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(activator.conditionalLogicType)), new GUIContent("Conditional Logic Type", ""), true);
+		EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(activator.compoundCheckEvaluation)), new GUIContent("Evaluation", ""), true);
 
-		if(activator.conditionalLogicType != Activator.ConditionalLogicType.NoRequirement)
+		if(activator.conditionalLogicChecks.Length > 0)
 		{
 			EditorGUI.indentLevel--;
-			EditorGUILayout.HelpBox("This Activator will only activate if the following conditional logic evaluates to true.", MessageType.Info);
+			if(activator.compoundCheckEvaluation == Activator.ConditionalLogicCheckEvaluation.PassIfAnyAreTrue)
+			{
+				EditorGUILayout.HelpBox("This Activator will only activate if any of the following conditional logic evaluates to true.", MessageType.Info);
+			}
+			else if(activator.compoundCheckEvaluation == Activator.ConditionalLogicCheckEvaluation.PassIfAllAreTrue)
+			{
+				EditorGUILayout.HelpBox("This Activator will only activate if all of the following conditional logic evaluates to true.", MessageType.Info);
+			}
 			EditorGUI.indentLevel++;
 		}
 
-		if(activator.conditionalLogicType != Activator.ConditionalLogicType.NoRequirement)
-		{
-			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(activator.firstValue)), new GUIContent("First Value", ""), true);
-			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(activator.secondValue)), new GUIContent("Second Value", ""), true);
-		}
+		EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(activator.conditionalLogicChecks)), new GUIContent("Conditional Logic Checks", ""), true);
 
 		EditorGUILayout.EndVertical();
 

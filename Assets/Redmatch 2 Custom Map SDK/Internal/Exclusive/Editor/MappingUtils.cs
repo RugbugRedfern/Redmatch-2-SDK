@@ -10,6 +10,8 @@ using Debug = UnityEngine.Debug;
 #if !REDMATCH
 public static class MappingUtils
 {
+	private const string TEMPLATE_SCENE_GUID = "8dccff1ed711f8c4d950622e273c5f3e";
+
 	public static string SetApplicationPath()
 	{
 		string path = EditorUtility.OpenFilePanel("Find Redmatch 2.exe", EditorSteamManager.GetInstallFolder(), "exe");
@@ -56,6 +58,14 @@ public static class MappingUtils
 		mapConfig.bundleName = mapName.ToLower().Replace(' ', '_');
 		mapConfig.name = mapName;
 		AssetDatabase.CreateAsset(mapConfig, mapConfigPath);
+
+		string templatePath = AssetDatabase.GUIDToAssetPath(TEMPLATE_SCENE_GUID);
+
+		if(string.IsNullOrEmpty(templatePath))
+		{
+			Debug.LogError("Could not locate the map template scene. The SDK may be incorrectly imported.");
+			return;
+		}
 
 		AssetDatabase.CopyAsset("Assets/Redmatch 2 Custom Map SDK/Internal/Scenes/Template.unity", scenePath);
 		AssetDatabase.SaveAssets();

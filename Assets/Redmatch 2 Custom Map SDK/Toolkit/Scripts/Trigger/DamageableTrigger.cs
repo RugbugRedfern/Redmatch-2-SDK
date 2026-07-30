@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(MyceliumIdentity))]
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Triggers#damageabletrigger-c-source")]
 public class DamageableTrigger : CooldownTrigger
 {
 	[Tooltip("The minimum amount of damage that must be done in a single hit to execute the trigger.")]

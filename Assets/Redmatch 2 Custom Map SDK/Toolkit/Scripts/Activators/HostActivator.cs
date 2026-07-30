@@ -1,6 +1,10 @@
 
 using System.Collections.Generic;
+using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Activators#host-activator-c-source")]
 public class HostActivator : Activator
 {
 	public enum WinLogicType { MostKills, MostPoints, MostDeaths, TriggerSource }

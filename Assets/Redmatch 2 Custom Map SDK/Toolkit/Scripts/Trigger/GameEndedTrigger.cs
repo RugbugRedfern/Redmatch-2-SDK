@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Triggers#gameendedtrigger-c-source")]
 public class GameEndedTrigger : Trigger
 {
 	public override string GetTarget()

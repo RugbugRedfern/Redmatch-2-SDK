@@ -1,8 +1,11 @@
 
 using UnityEngine;
 
+
 [RequireComponent(typeof(MyceliumIdentity))]
 [RequireComponent(typeof(Rigidbody))]
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Syncers#rigidbodysyncer-c-source")]
 public class RigidbodySyncer : SyncedBehaviour
 {
 	public bool syncPosition = true;

@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+
 using Random = UnityEngine.Random;
 
 /*
@@ -11,6 +12,8 @@ using Random = UnityEngine.Random;
  * can be avoided.
  */
 
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Activators#generic-activator-c-source")]
 public class GenericActivator : Activator
 {
 	public enum AuthorityRequirement { OnlyHost, OnlyLocalPlayer, Everyone };

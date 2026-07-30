@@ -1,7 +1,10 @@
 
 using UnityEngine;
+
 using UnityEngine.UI;
 
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/ValueDisplay#filledimagevaluedisplay-c-source")]
 public class FilledImageValueDisplay : ValueDisplay
 {
 	[SerializeField] Image fillImage;

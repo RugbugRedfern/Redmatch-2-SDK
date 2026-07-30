@@ -15,7 +15,7 @@ public static class ProjectInit
 	// yes, you can just change this value. but I recommend you don't.
 	// some features of the map may break and not work correctly, depending
 	// on the changes I made between versions.
-	public const string SDKVersion = "1.1.2";
+	public const string SDKVersion = "1.1.3";
 	private readonly static string[] validVersions = new string[] { "2019.4.17f1", "2019.4.41f1" };
 	const string configURL = "https://rugbug.net/redmatch/custom-maps/config.txt";
 
@@ -133,13 +133,15 @@ public static class ProjectInit
 
 		var config = JsonConvert.DeserializeObject<SDKConfig>(configRequest.downloadHandler.text);
 
-		// Major version change
-		if(config.currentVersion != SDKVersion)
+		// Allow a message to be displayed if needed
+		if(config.hasMessage && !config.noMessageVersions.Contains(SDKVersion))
 		{
-			CanBuild = false;
-			if(EditorUtility.DisplayDialog("Error", $"The installed Redmatch 2 Custom Map SDK version (v{SDKVersion}) is out of date. Download the new version v{config.currentVersion}.", "New Version"))
+			if(EditorUtility.DisplayDialog(config.title, config.message, config.buttonText))
 			{
-				Application.OpenURL(config.downloadPage);
+				if(!string.IsNullOrEmpty(config.buttonUrl))
+				{
+					Application.OpenURL(config.buttonUrl);
+				}
 			}
 			return;
 		}
@@ -249,8 +251,12 @@ public static class ProjectInit
 	[Serializable]
 	class SDKConfig
 	{
-		public string currentVersion;
-		public string downloadPage;
+		public string noMessageVersions;
+		public bool hasMessage;
+		public string title;
+		public string message;
+		public string buttonText;
+		public string buttonUrl;
 	}
 }
 #endif

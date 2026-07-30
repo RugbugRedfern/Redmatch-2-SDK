@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Activators#math-activator-c-source")]
 public class MathActivator : Activator
 {
 	public MathCalculation[] calculations = new MathCalculation[0];

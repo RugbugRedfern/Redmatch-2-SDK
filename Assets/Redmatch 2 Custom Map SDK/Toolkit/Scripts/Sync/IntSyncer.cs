@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(MyceliumIdentity))]
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Syncers#intsyncer-c-source")]
 public class IntSyncer : SyncedBehaviour
 {
 	[Tooltip("Min -2147483648, Max +2147483648")]

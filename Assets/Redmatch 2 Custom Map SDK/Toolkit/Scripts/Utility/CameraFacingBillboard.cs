@@ -1,6 +1,9 @@
 
 using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/CameraFacingBillboard")]
 public class CameraFacingBillboard : MonoBehaviour
 {
 	[SerializeField] bool maintainSize;

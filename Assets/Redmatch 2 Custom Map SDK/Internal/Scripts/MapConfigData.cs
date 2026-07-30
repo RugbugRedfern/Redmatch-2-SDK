@@ -38,6 +38,9 @@ public enum CustomMapMatchSetting
 public class UnsanitizedMapConfigData
 {
 	public Dictionary<string, string> MatchSettingOverrides = new Dictionary<string, string>();
+
+// Some code here has been excluded from the SDK.
+
 	public string SDKVersion;
 }
 

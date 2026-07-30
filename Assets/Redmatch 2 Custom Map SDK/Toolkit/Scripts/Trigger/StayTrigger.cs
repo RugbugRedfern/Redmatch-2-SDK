@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Security.Principal;
 using UnityEngine;
 
+
+
+[HelpURL("https://github.com/RugbugRedfern/Redmatch-2-SDK/wiki/Triggers#staytrigger-c-source")]
 public class StayTrigger : TriggerColliderTrigger
 {
 	public override string GetTarget()
